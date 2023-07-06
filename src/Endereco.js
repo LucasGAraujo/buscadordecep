@@ -6,14 +6,17 @@ function Endereco() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(endereco ==""){
+  alert("error favor preencher o campo" )
+}else{
     try{
       const response =await fetch(`https://viacep.com.br/ws/${endereco}/json/`)
       const data = await response.json();
       setDadosEndereco(data)
     }catch(error){
-      console.log("Errorrrrrr helpsme" + error)
+      alert("error favor " + error)
     }
-      
+  }  
   };
 
   return (
@@ -23,7 +26,8 @@ function Endereco() {
           <input
             type='text'
             value={endereco}
-            placeholder='Digite seu Cep'
+            placeholder='Digite seu Cep
+            ex:"24365187'
             onChange={(e) => setEndereco(e.target.value)}
           />
           <button type="submit">Buscar</button>
